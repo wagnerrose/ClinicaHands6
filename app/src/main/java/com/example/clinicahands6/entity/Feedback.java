@@ -2,6 +2,8 @@ package com.example.clinicahands6.entity;
 
 public class Feedback {
 
+    private boolean mSucesso = true;
+    private String mMensagem;
     /**
      * Construtor - Recebendo somente a mensagem, assume-se sucesso
      */
@@ -14,15 +16,11 @@ public class Feedback {
         this.mSucesso = sucesso;
     }
 
-    public boolean isSucesso() {
-        return this.mSucesso;
-    }
+//    public boolean isSucesso() {
+//        return this.mSucesso;
+//    }
 
-    public String getMensagem() {
-        return this.mMensagem;
-    }
-
-    private boolean mSucesso = true;
-    private String mMensagem = "";
-
+//    public String getMensagem() {
+//        return this.mMensagem;
+//    }
 }

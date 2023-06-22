@@ -1,19 +1,37 @@
 package com.example.clinicahands6.viewmodel;
 
+import android.app.Application;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-public class PacientesViewModel extends ViewModel {
+import com.example.clinicahands6.entity.PacienteEntity;
+import com.example.clinicahands6.repository.PacienteRepository;
 
-    private final MutableLiveData<String> mText;
+import java.util.List;
 
-    public PacientesViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("Fragmento Pacientes");
+public class PacientesViewModel extends AndroidViewModel {
+
+
+    private PacienteRepository mRepository;
+
+    private MutableLiveData<List<PacienteEntity>> mlistaPacientes = new MutableLiveData<>();
+    public LiveData<List<PacienteEntity>> listaPacientes = this.mlistaPacientes;
+
+    public PacientesViewModel(@NonNull Application application) {
+        super(application);
+        this.mRepository = new PacienteRepository(application.getApplicationContext());
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void getList() {
+
+        this.mlistaPacientes.setValue(this.mRepository.getAll());
+
     }
+
+//    public void bind(PacienteEntity) {
+//
+//    }
 }

@@ -18,6 +18,7 @@ public class MedicoViewModel extends ViewModel {
     public LiveData<Feedback> feedback = this.mFeedback;
 
     public void salvar(MedicoEntity medico) {
+        // validação dos campos
         // Realiza a validação do campo nome
         if ("".equals(medico.getNome())) {
             this.mFeedback.setValue(new Feedback("Nome obrigatório!", false));

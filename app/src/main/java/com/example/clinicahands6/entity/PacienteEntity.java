@@ -9,10 +9,10 @@ public class PacienteEntity {
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     private int id;
-    @ColumnInfo(name = "cpf")
-    private String cpf;
     @ColumnInfo(name = "nome")
     private String nome;
+    @ColumnInfo(name = "cpf")
+    private String cpf;
     @ColumnInfo(name = "data_nascimento")
     private String data_nascimento;
     @ColumnInfo(name = "email")
@@ -23,8 +23,8 @@ public class PacienteEntity {
     private String telefone;
 
     public PacienteEntity(String cpf, String nome, String data_nascimento, String email, String endereco, String telefone) {
-        this.cpf = cpf;
         this.nome = nome;
+        this.cpf = cpf;
         this.data_nascimento = data_nascimento;
         this.email = email;
         this.endereco = endereco;
@@ -39,20 +39,20 @@ public class PacienteEntity {
         this.id = id;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getData_nascimento() { return data_nascimento; }

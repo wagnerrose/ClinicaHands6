@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_paciente">
+    app:startDestination="@+id/nav_pacientes">
 
     <fragment
-        android:id="@+id/nav_paciente"
+        android:id="@+id/nav_pacientes"
         android:name="com.example.clinicahands6.view.PacientesFragment"
         android:label="Pacientes"
         tools:layout="@layout/fragment_pacientes" />
 
     <fragment
-        android:id="@+id/nav_medico"
+        android:id="@+id/nav_medicos"
         android:name="com.example.clinicahands6.view.MedicosFragment"
         android:label="Médicos"
         tools:layout="@layout/fragment_medicos" />

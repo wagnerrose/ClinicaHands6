@@ -5,7 +5,7 @@
     android:layout_margin="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormularioMedicoActivity">
+    tools:context=".view.MedicoActivity">
 
     <TextView
         android:id="@+id/textViewNome"
@@ -27,7 +27,7 @@
         android:text="UF CRM" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editCrmUf"
+        android:id="@+id/editCrm_uf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -39,8 +39,15 @@
         android:text="CRM" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editCrmCodigo"
+        android:id="@+id/editCrm_codigo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:inputType="number" />
+    <Button
+        android:id="@+id/btSalvar"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salvar"/>
 
 </LinearLayout>
