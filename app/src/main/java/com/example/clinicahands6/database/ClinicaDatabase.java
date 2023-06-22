@@ -30,6 +30,7 @@ import com.example.clinicahands6.entity.PacienteEntity;
         PacienteEntity.class}, version = 1, exportSchema = false)
 public abstract class ClinicaDatabase extends RoomDatabase {
 
+    // necessario para o evitar duplo instaciamento do DB
     private static ClinicaDatabase INSTANCE;
 
     public abstract MedicoDao MedicoDao();
@@ -37,7 +38,9 @@ public abstract class ClinicaDatabase extends RoomDatabase {
 
     public static ClinicaDatabase getClinicaDatabase(Context context) {
         if (INSTANCE == null) {
-            INSTANCE = Room.databaseBuilder(context, ClinicaDatabase.class, "clinica")
+//            instacia o DB caso ele ainda não tenha sido instanciado
+//            segue o padrão Singleton
+            INSTANCE = Room.databaseBuilder(context, ClinicaDatabase.class, "clinica.db")
                     .allowMainThreadQueries()
                     .addCallback(new Callback() {
                         @Override

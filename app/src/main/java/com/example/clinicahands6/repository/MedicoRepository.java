@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MedicoRepository {
 
-//    private String DB_NAME = "clinicaDb";
+    private String DB_NAME = "clinica.db";
     private MedicoDao mMedicoDao;
 
 //    private ClinicaDatabase clinicaDatabase;
