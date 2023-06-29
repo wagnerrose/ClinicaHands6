@@ -28,8 +28,8 @@ public class MedicoActivity extends AppCompatActivity implements View.OnClickLis
         this.mViewModel = new ViewModelProvider(this).get(MedicoViewModel.class);
         //mepeia os elementos do layout formulario paciente
         this.mViewHolder.editNome = findViewById(R.id.editNome);
-        this.mViewHolder.editCrm_uf = findViewById(R.id.editCrm_uf);
-        this.mViewHolder.editCrm_codigo = findViewById(R.id.editCrm_codigo);
+        this.mViewHolder.editCrmUf = findViewById(R.id.editCrmUf);
+        this.mViewHolder.editCrmCodigo = findViewById(R.id.editCrmCodigo);
         this.mViewHolder.btSalvar = findViewById(R.id.btSalvar);
         // escuta os eventos
         this.setListeners();
@@ -54,8 +54,8 @@ public class MedicoActivity extends AppCompatActivity implements View.OnClickLis
     private void HandleSalvar() {
         // obtem os valores dos campos do formulário
         String nome = this.mViewHolder.editNome.getText().toString();
-        String crm_uf = this.mViewHolder.editCrm_uf.getText().toString();
-        int crm_codigo = Integer.parseInt(this.mViewHolder.editCrm_codigo.getText().toString());
+        String crm_uf = this.mViewHolder.editCrmUf.getText().toString();
+        int crm_codigo = Integer.parseInt(this.mViewHolder.editCrmCodigo.getText().toString());
 
         // instancia medico
         MedicoEntity medico = new MedicoEntity( nome, crm_uf,  crm_codigo);
@@ -67,8 +67,8 @@ public class MedicoActivity extends AppCompatActivity implements View.OnClickLis
     public static class ViewHolder {
 
         EditText editNome;
-        EditText editCrm_uf;
-        EditText editCrm_codigo;
+        EditText editCrmUf;
+        EditText editCrmCodigo;
         Button btSalvar;
 
     }

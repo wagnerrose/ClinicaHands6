@@ -4,6 +4,7 @@
 
     <application
         android:allowBackup="true"
+        android:enableOnBackInvokedCallback="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -12,13 +13,10 @@
         android:theme="@style/Theme.ClinicaHands6"
         tools:targetApi="31">
         <activity
-            android:name=".FormularioEspecialidadeActivity"
+            android:name=".view.EspecialidadeActivity"
             android:exported="false" />
         <activity
-            android:name=".FormularioConvenioActivity"
-            android:exported="false" />
-        <activity
-            android:name=".FormularioMedicoActivity"
+            android:name=".view.ConvenioActivity"
             android:exported="false" />
         <activity
             android:name=".view.MedicoActivity"

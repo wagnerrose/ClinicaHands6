@@ -1,10 +1,12 @@
-package com.example.clinicahands6;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.clinicahands6.view;
 
 import android.os.Bundle;
 
-public class FormularioEspecialidadeActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.clinicahands6.R;
+
+public class EspecialidadeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

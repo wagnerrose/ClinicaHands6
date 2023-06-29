@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/textViewNome"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nome" />
@@ -21,25 +21,25 @@
 
     <TextView
         android:id="@+id/textViewCrmUf"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="UF CRM" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editCrm_uf"
+        android:id="@+id/editCrmUf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <TextView
-        android:id="@+id/textViewCrmCodico"
-        android:layout_marginTop="32dp"
+        android:id="@+id/textViewCrmCodigo"
+        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CRM" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editCrm_codigo"
+        android:id="@+id/editCrmCodigo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number" />

@@ -13,8 +13,8 @@ public class PacienteEntity {
     private String nome;
     @ColumnInfo(name = "cpf")
     private String cpf;
-    @ColumnInfo(name = "data_nascimento")
-    private String data_nascimento;
+    @ColumnInfo(name = "dataNascimento")
+    private String dataNascimento;
     @ColumnInfo(name = "email")
     private String email;
     @ColumnInfo(name = "endereco")
@@ -22,10 +22,10 @@ public class PacienteEntity {
     @ColumnInfo(name = "telefone")
     private String telefone;
 
-    public PacienteEntity(String cpf, String nome, String data_nascimento, String email, String endereco, String telefone) {
+    public PacienteEntity(String nome, String cpf, String dataNascimento, String email, String endereco, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
-        this.data_nascimento = data_nascimento;
+        this.dataNascimento = dataNascimento;
         this.email = email;
         this.endereco = endereco;
         this.telefone = telefone;
@@ -55,9 +55,9 @@ public class PacienteEntity {
         this.cpf = cpf;
     }
 
-    public String getData_nascimento() { return data_nascimento; }
+    public String getDataNascimento() { return dataNascimento; }
 
-    public void setData_nascimento(String data_nascimento) { this.data_nascimento = data_nascimento;}
+    public void setDatNascimento(String dataNascimento) { this.dataNascimento = dataNascimento;}
 
     public String getEmail() { return email; }
 

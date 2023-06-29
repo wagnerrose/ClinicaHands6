@@ -5,23 +5,23 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_paciente"
+            android:id="@+id/nav_pacientes"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/menu_pacientes" />
         <item
-            android:id="@+id/nav_medico"
+            android:id="@+id/nav_medicos"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Médicos" />
         <item
-            android:id="@+id/nav_agenda"
+            android:id="@+id/nav_agendas"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Agenda"/>
+            android:title="Agendas"/>
         <item
-            android:id="@+id/nav_convenio"
+            android:id="@+id/nav_convenios"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Convenios"/>
         <item
-            android:id="@+id/nav_especialidade"
+            android:id="@+id/nav_especialidades"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Especialidades"/>
     </group>

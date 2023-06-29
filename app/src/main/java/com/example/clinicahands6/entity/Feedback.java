@@ -16,11 +16,11 @@ public class Feedback {
         this.mSucesso = sucesso;
     }
 
-//    public boolean isSucesso() {
-//        return this.mSucesso;
-//    }
+    public boolean isSucesso() {
+        return this.mSucesso;
+    }
 
-//    public String getMensagem() {
-//        return this.mMensagem;
-//    }
+    public String getMensagem() {
+        return this.mMensagem;
+    }
 }

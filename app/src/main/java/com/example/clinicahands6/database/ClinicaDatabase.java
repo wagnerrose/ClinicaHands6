@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.clinicahands6.Dao.MedicoDao;
@@ -27,7 +26,9 @@ import com.example.clinicahands6.entity.PacienteEntity;
         MedicoConvenioEntity.class,
         MedicoEntity.class,
         MedicoEspecialidadeEntity.class,
-        PacienteEntity.class}, version = 1, exportSchema = false)
+        PacienteEntity.class},
+        version = 2,
+        exportSchema = false)
 public abstract class ClinicaDatabase extends RoomDatabase {
 
     // necessario para o evitar duplo instaciamento do DB
@@ -48,16 +49,17 @@ public abstract class ClinicaDatabase extends RoomDatabase {
                             super.onCreate(db);
                         }
                     })
-                    .addMigrations(MIGRATION_1_2)
+                    .fallbackToDestructiveMigration()
+//                    .addMigrations(MIGRATION_1_2)
                     .build();
         }
         return INSTANCE;
     }
 
-    public static Migration MIGRATION_1_2 = new Migration(1, 2) {
-        @Override
-        public void migrate(@NonNull SupportSQLiteDatabase database) {
-
-        }
-    };
+//    public static Migration MIGRATION_1_2 = new Migration(1, 2) {
+//        @Override
+//        public void migrate(@NonNull SupportSQLiteDatabase database) {
+//
+//        }
+//    };
 }

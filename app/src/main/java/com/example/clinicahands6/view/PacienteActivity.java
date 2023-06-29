@@ -1,12 +1,12 @@
 package com.example.clinicahands6.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.clinicahands6.R;
 import com.example.clinicahands6.entity.PacienteEntity;
@@ -27,7 +27,7 @@ public class PacienteActivity extends AppCompatActivity implements View.OnClickL
         this.mViewHolder.editNome = findViewById(R.id.editNome);
         this.mViewHolder.editCpf = findViewById(R.id.editCpf);
         this.mViewHolder.editEmail = findViewById(R.id.editEmail);
-        this.mViewHolder.editData_nascimento = findViewById(R.id.editData_nascimento);
+        this.mViewHolder.editDataNascimento = findViewById(R.id.editDataNascimento);
         this.mViewHolder.editEndereco = findViewById(R.id.editEndereco);
         this.mViewHolder.editTelefone = findViewById((R.id.editTelefone));
         this.mViewHolder.btSalvar = findViewById(R.id.btSalvar);
@@ -53,7 +53,7 @@ public class PacienteActivity extends AppCompatActivity implements View.OnClickL
     private void HandleSalvar() {
         String nome = this.mViewHolder.editNome.getText().toString();
         String cpf = this.mViewHolder.editCpf.getText().toString();
-        String data_nascimento = this.mViewHolder.editData_nascimento.getText().toString();
+        String data_nascimento = this.mViewHolder.editDataNascimento.getText().toString();
         String email = this.mViewHolder.editEmail.getText().toString();
         String endereco = this.mViewHolder.editEndereco.getText().toString();
         String telefone = this.mViewHolder.editTelefone.getText().toString();
@@ -68,7 +68,7 @@ public class PacienteActivity extends AppCompatActivity implements View.OnClickL
     public static class ViewHolder {
         EditText editNome;
         EditText editCpf;
-        EditText editData_nascimento;
+        EditText editDataNascimento;
         EditText editEmail;
         EditText editEndereco;
         EditText editTelefone;
