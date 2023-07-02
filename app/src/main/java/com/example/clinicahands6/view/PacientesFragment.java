@@ -1,5 +1,6 @@
 package com.example.clinicahands6.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.clinicahands6.R;
+import com.example.clinicahands6.constantes.PacienteConstantes;
 import com.example.clinicahands6.databinding.FragmentPacientesBinding;
 import com.example.clinicahands6.entity.PacienteEntity;
 import com.example.clinicahands6.view.adaptar.PacienteAdaptar;
+import com.example.clinicahands6.view.listener.OnListClick;
 import com.example.clinicahands6.viewmodel.PacientesViewModel;
 
 import java.util.List;
@@ -25,7 +28,6 @@ public class PacientesFragment extends Fragment {
     private FragmentPacientesBinding binding;
 
     private PacientesViewModel mViewModel;
-
     private ViewHolder mViewHolder = new ViewHolder();
     private PacienteAdaptar mAdaptar = new PacienteAdaptar();
 
@@ -42,16 +44,40 @@ public class PacientesFragment extends Fragment {
         this.mViewHolder.recyclerPacientes.setLayoutManager(new LinearLayoutManager(getContext()));
         //        define um adapter
         this.mViewHolder.recyclerPacientes.setAdapter(this.mAdaptar);
+
+        OnListClick listener = new OnListClick() {
+            @Override
+            public void onClick(int id) {
+//                passando parametros para a activity
+                Bundle bundle = new Bundle();
+                bundle.putInt(PacienteConstantes.PACIENTEID, id);
+                Intent intent = new Intent(getContext(), PacienteActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        };
+
+        this.mAdaptar.attachListener(listener);
+
+
         //      Monitora a alteração dos dados
-        this.observer();
+        this.observers();
 //        carrega da lista de pacientes para a Fragment
-        this.mViewModel.getList();
+
         return root;
     }
-    private void observer() {
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.mViewModel.getList();
+    }
+
+    private void observers() {
         this.mViewModel.listaPacientes.observe(getViewLifecycleOwner(), new Observer<List<PacienteEntity>>() {
             @Override
             public void onChanged(List<PacienteEntity> listaPacientes) {
+//                qdo a lista for alterada será enviada ao adaptar
                 mAdaptar.preencheLista(listaPacientes);
             }
         });

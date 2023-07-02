@@ -25,8 +25,8 @@ public class MedicoRepository {
         return this.mMedicoDao.insert(medico) > 0;
     }
 
-    public int update(MedicoEntity medico) {
-        return this.mMedicoDao.update(medico);
+    public boolean update(MedicoEntity medico) {
+        return this.mMedicoDao.update(medico)>0;
     }
 
     public boolean delete(int id){

@@ -17,7 +17,8 @@ public class MedicoEntity {
     @ColumnInfo(name = "crm_codigo")
     private int crm_codigo;
 
-    public MedicoEntity(String nome, String crm_uf, int crm_codigo) {
+    public MedicoEntity(int id, String nome, String crm_uf, int crm_codigo) {
+        this.id = id;
         this.nome = nome;
         this.crm_uf = crm_uf;
         this.crm_codigo = crm_codigo;

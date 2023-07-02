@@ -17,7 +17,8 @@ public class AgendaEntity {
     @ColumnInfo(name="dataHora")
     private String dataHora;
 
-    public AgendaEntity(int idMedico, int idPaciente, String dataHora) {
+    public AgendaEntity(int id, int idMedico, int idPaciente, String dataHora) {
+        this.id = id;
         this.idMedico = idMedico;
         this.idPaciente = idPaciente;
         this.dataHora = dataHora;

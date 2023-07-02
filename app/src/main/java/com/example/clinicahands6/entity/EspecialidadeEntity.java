@@ -15,7 +15,8 @@ public class EspecialidadeEntity {
     @ColumnInfo(name = "descricao")
     private String descricao;
 
-    public EspecialidadeEntity(String nome, String descricao) {
+    public EspecialidadeEntity(int id, String nome, String descricao) {
+        this.id = id;
         this.nome = nome;
         this.descricao = descricao;
     }

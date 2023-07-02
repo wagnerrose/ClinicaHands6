@@ -7,7 +7,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.clinicahands6.entity.Feedback;
 import com.example.clinicahands6.entity.PacienteEntity;
 import com.example.clinicahands6.repository.PacienteRepository;
 
@@ -15,11 +14,12 @@ public class PacienteViewModel extends AndroidViewModel {
 
     private PacienteRepository mRepository;
 
+    //    usado para acompanhar as alterações na
     private MutableLiveData<PacienteEntity> mPaciente = new MutableLiveData<>();
     public LiveData<PacienteEntity> paciente = this.mPaciente;
 
-    private MutableLiveData<Feedback> mFeedback = new MutableLiveData<>();
-    public LiveData<Feedback> feedback = this.mFeedback;
+    private MutableLiveData<Boolean> mFeedback = new MutableLiveData<>();
+    public LiveData<Boolean> feedback = this.mFeedback;
 
     public PacienteViewModel(@NonNull Application application) {
         super(application);
@@ -27,26 +27,24 @@ public class PacienteViewModel extends AndroidViewModel {
     }
 
     public void salvar(PacienteEntity paciente) {
-        // Realiza a validação do campo nome
+        // Realiza a validação do campo nome não nulo
         if ("".equals(paciente.getNome())) {
-            this.mFeedback.setValue(new Feedback("Nome obrigatório!", false));
+            this.mFeedback.setValue(false);
             return;
         }
 
+//      Para um id de paciente nulo, estaremos em um ambiente de inclusão
+//      caso contrário será de edição
         if (paciente.getId() == 0) {
             // Caso seja inserção
-            if (this.mRepository.insert(paciente)) {
-                this.mFeedback.setValue(new Feedback("Convidado inserido com sucesso!"));
-            } else {
-                this.mFeedback.setValue(new Feedback("Erro inesperado", false));
-            }
+            this.mFeedback.setValue(this.mRepository.insert(paciente));
         } else {
             // Caso seja atualização
-            if (this.mRepository.update(paciente)==1) {
-                this.mFeedback.setValue(new Feedback("Convidado atualizado com sucesso!"));
-            } else {
-                this.mFeedback.setValue(new Feedback("Erro inesperado", false));
-            }
+            this.mFeedback.setValue(this.mRepository.update(paciente));
         }
+    }
+
+    public void lePaciente(int id) {
+        this.mPaciente.setValue(this.mRepository.getById(id));
     }
 }

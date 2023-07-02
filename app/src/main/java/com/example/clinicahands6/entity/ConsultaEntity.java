@@ -20,7 +20,8 @@ public class ConsultaEntity {
     @ColumnInfo(name = "anotacao")
     private String anotacao;
 
-    public ConsultaEntity(int idMedico, int idPaciente, int idAgenda, String anotacao) {
+    public ConsultaEntity(int id, int idMedico, int idPaciente, int idAgenda, String anotacao) {
+        this.id = id;
         this.idMedico = idMedico;
         this.idPaciente = idPaciente;
         this.idAgenda = idAgenda;

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.clinicahands6.R;
 import com.example.clinicahands6.entity.PacienteEntity;
+import com.example.clinicahands6.view.listener.OnListClick;
 import com.example.clinicahands6.view.viewholder.PacienteViewHolder;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.List;
 public class PacienteAdaptar extends RecyclerView.Adapter<PacienteViewHolder> {
 
     private List<PacienteEntity> mList = new ArrayList<>();
-
+    private OnListClick mListener;
     @NonNull
     @Override
     public PacienteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,7 +32,7 @@ public class PacienteAdaptar extends RecyclerView.Adapter<PacienteViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull PacienteViewHolder holder, int position) {
 //       atribui valores a linha
-        holder.bind(this.mList.get(position));
+        holder.bind(this.mList.get(position), this.mListener);
 
     }
 
@@ -45,5 +46,10 @@ public class PacienteAdaptar extends RecyclerView.Adapter<PacienteViewHolder> {
         // notifica o adaptar qdo os dados foram alterados
         // assim ele refaz a view com os novos dados
         notifyDataSetChanged();
+    }
+
+    public void attachListener(OnListClick listener) {
+        this.mListener = listener;
+
     }
 }

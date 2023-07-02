@@ -22,7 +22,8 @@ public class PacienteEntity {
     @ColumnInfo(name = "telefone")
     private String telefone;
 
-    public PacienteEntity(String nome, String cpf, String dataNascimento, String email, String endereco, String telefone) {
+    public PacienteEntity(int id, String nome, String cpf, String dataNascimento, String email, String endereco, String telefone) {
+        this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;

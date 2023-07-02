@@ -14,7 +14,8 @@ public class MedicoEspecialidadeEntity {
     @ColumnInfo(name = "idEspecialidade")
     private int idEspecialidade;
 
-    public MedicoEspecialidadeEntity(int idMedico, int idEspecialidade) {
+    public MedicoEspecialidadeEntity(int id, int idMedico, int idEspecialidade) {
+        this.id = id;
         this.idMedico = idMedico;
         this.idEspecialidade = idEspecialidade;
     }

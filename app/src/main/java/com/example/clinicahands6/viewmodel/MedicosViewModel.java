@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.clinicahands6.entity.MedicoEntity;
 import com.example.clinicahands6.repository.MedicoRepository;
@@ -21,6 +20,7 @@ public LiveData<List<MedicoEntity>> listaMedicos = this.mlistaMedicos;
 
     public MedicosViewModel(@NonNull Application application) {
         super(application);
+//        instacia o repositório com o contexto obtido pelo metodo getApplicationContext
         this.mRepository = new MedicoRepository(application.getApplicationContext());
     }
 

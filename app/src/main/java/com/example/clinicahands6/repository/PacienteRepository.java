@@ -24,8 +24,8 @@ public class PacienteRepository {
         return this.mPacienteDao.insert(paciente) > 0;
     }
 
-    public int update(PacienteEntity paciente) {
-        return this.mPacienteDao.update(paciente);
+    public boolean update(PacienteEntity paciente) {
+        return this.mPacienteDao.update(paciente) > 0;
     }
 
     public boolean delete(int id) {

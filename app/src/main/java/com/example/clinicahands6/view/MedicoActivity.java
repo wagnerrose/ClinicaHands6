@@ -33,6 +33,7 @@ public class MedicoActivity extends AppCompatActivity implements View.OnClickLis
         this.mViewHolder.btSalvar = findViewById(R.id.btSalvar);
         // escuta os eventos
         this.setListeners();
+//        this.setObservers();
     }
 
     private void setListeners() {
@@ -51,6 +52,8 @@ public class MedicoActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+
+
     private void HandleSalvar() {
         // obtem os valores dos campos do formulário
         String nome = this.mViewHolder.editNome.getText().toString();
@@ -58,7 +61,7 @@ public class MedicoActivity extends AppCompatActivity implements View.OnClickLis
         int crm_codigo = Integer.parseInt(this.mViewHolder.editCrmCodigo.getText().toString());
 
         // instancia medico
-        MedicoEntity medico = new MedicoEntity( nome, crm_uf,  crm_codigo);
+        MedicoEntity medico = new MedicoEntity( 0, nome, crm_uf,  crm_codigo);
         // encaminha os dados para ViewModel implementar as regras de negócio (validação dos dados,
         // adaptação e salvamento;
         this.mViewModel.salvar(medico);

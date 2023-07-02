@@ -15,7 +15,8 @@ public class ConvenioEntity {
     @ColumnInfo(name = "descricao")
     private String descricao;
 
-    public ConvenioEntity(String nome, String descricao) {
+    public ConvenioEntity(int id, String nome, String descricao) {
+        this.id = id;
         this.nome = nome;
         this.descricao = descricao;
     }
