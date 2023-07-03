@@ -13,13 +13,14 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.clinicahands6.R;
 import com.example.clinicahands6.constantes.PacienteConstantes;
 import com.example.clinicahands6.entity.PacienteEntity;
+import com.example.clinicahands6.entity.RetornoEntity;
 import com.example.clinicahands6.viewmodel.PacienteViewModel;
 
 public class PacienteActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ViewHolder mViewHolder = new ViewHolder();
     private PacienteViewModel mViewModel;
-//    usado para determinas se é uma inclusão ou alteração
+    //    usado para determinas se é uma inclusão ou alteração
 //    caso mPacienteId seja nulo estamos em uma inclusão de paciente
 //    caso contrário será uma edição
     private int mPacienteId = 0;
@@ -46,7 +47,7 @@ public class PacienteActivity extends AppCompatActivity implements View.OnClickL
 
 //        verifica se foram passados parâmetros extras para a activity
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null){
+        if (bundle != null) {
 //          como houve passagem de parâmetros na intent estamos em no modo de edição de paciente
 //          assim buscamos o Id do paciente
             this.mPacienteId = bundle.getInt(PacienteConstantes.PACIENTEID);
@@ -63,6 +64,7 @@ public class PacienteActivity extends AppCompatActivity implements View.OnClickL
             this.HandleSalvar();
         }
     }
+
     private void setListeners() {
         // executa ao ser clicado botão salvar
         this.mViewHolder.btSalvar.setOnClickListener(this);
@@ -80,17 +82,14 @@ public class PacienteActivity extends AppCompatActivity implements View.OnClickL
                 mViewHolder.editTelefone.setText(paciente.getTelefone());
             }
         });
-        this.mViewModel.feedback.observe(this, new Observer<Boolean>() {
+        this.mViewModel.retorno.observe(this, new Observer<RetornoEntity>() {
+
             @Override
-            public void onChanged(Boolean aBoolean) {
-                String mensagem = "";
-                if(aBoolean){
-                    if(mPacienteId == 0){
-                        mensagem = "Paciente inserido com sucesso.";
-                    } else {
-                        mensagem = "Paciente atualizado com sucesso.";
-                    }
-                    Toast.makeText(getApplicationContext(), mensagem, Toast.LENGTH_SHORT);
+            public void onChanged(RetornoEntity retorno) {
+//                informa o salvamento dos dados
+                Toast.makeText(getApplicationContext(), retorno.mMensagem, Toast.LENGTH_SHORT).show();
+//                caso tenha dado certo, encerra a activity senão continua na nela
+                if (retorno.deuCerto()) {
                     finish();
                 }
             }
@@ -106,7 +105,7 @@ public class PacienteActivity extends AppCompatActivity implements View.OnClickL
         String endereco = this.mViewHolder.editEndereco.getText().toString();
         String telefone = this.mViewHolder.editTelefone.getText().toString();
 
-        PacienteEntity paciente = new PacienteEntity(this.mPacienteId, nome, cpf,  data_nascimento,  email,  endereco,  telefone);
+        PacienteEntity paciente = new PacienteEntity(this.mPacienteId, nome, cpf, data_nascimento, email, endereco, telefone);
         // encaminha os dados para ViewModel implementar as regras de negócio (validação dos dados,
         // adaptação e salvamento;
         this.mViewModel.salvar(paciente);

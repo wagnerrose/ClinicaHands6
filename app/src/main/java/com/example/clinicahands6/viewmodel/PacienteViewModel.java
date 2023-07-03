@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.clinicahands6.entity.PacienteEntity;
+import com.example.clinicahands6.entity.RetornoEntity;
 import com.example.clinicahands6.repository.PacienteRepository;
 
 public class PacienteViewModel extends AndroidViewModel {
@@ -18,8 +19,8 @@ public class PacienteViewModel extends AndroidViewModel {
     private MutableLiveData<PacienteEntity> mPaciente = new MutableLiveData<>();
     public LiveData<PacienteEntity> paciente = this.mPaciente;
 
-    private MutableLiveData<Boolean> mFeedback = new MutableLiveData<>();
-    public LiveData<Boolean> feedback = this.mFeedback;
+    private MutableLiveData<RetornoEntity> mRetorno = new MutableLiveData<>();
+    public LiveData<RetornoEntity> retorno = this.mRetorno;
 
     public PacienteViewModel(@NonNull Application application) {
         super(application);
@@ -29,7 +30,7 @@ public class PacienteViewModel extends AndroidViewModel {
     public void salvar(PacienteEntity paciente) {
         // Realiza a validação do campo nome não nulo
         if ("".equals(paciente.getNome())) {
-            this.mFeedback.setValue(false);
+            this.mRetorno.setValue(new RetornoEntity("Nome não pode ser vazio", false));
             return;
         }
 
@@ -37,10 +38,18 @@ public class PacienteViewModel extends AndroidViewModel {
 //      caso contrário será de edição
         if (paciente.getId() == 0) {
             // Caso seja inserção
-            this.mFeedback.setValue(this.mRepository.insert(paciente));
+            if (this.mRepository.insert(paciente)) {
+                this.mRetorno.setValue(new RetornoEntity("Paciente incluido com sucesso!"));
+            } else {
+                this.mRetorno.setValue(new RetornoEntity("Falha na inclusão do Paciente.", false));
+            }
         } else {
             // Caso seja atualização
-            this.mFeedback.setValue(this.mRepository.update(paciente));
+            if (this.mRepository.update(paciente)) {
+                this.mRetorno.setValue(new RetornoEntity("Paciente atualizado com sucesso!"));
+            } else {
+                this.mRetorno.setValue(new RetornoEntity("Falha na atualização do Paciente.", false));
+            }
         }
     }
 

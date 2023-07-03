@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,7 @@ import com.example.clinicahands6.R;
 import com.example.clinicahands6.constantes.PacienteConstantes;
 import com.example.clinicahands6.databinding.FragmentPacientesBinding;
 import com.example.clinicahands6.entity.PacienteEntity;
+import com.example.clinicahands6.entity.RetornoEntity;
 import com.example.clinicahands6.view.adaptar.PacienteAdaptar;
 import com.example.clinicahands6.view.listener.OnListClick;
 import com.example.clinicahands6.viewmodel.PacientesViewModel;
@@ -55,6 +57,12 @@ public class PacientesFragment extends Fragment {
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
+
+            @Override
+            public void onDelete(int id) {
+                mViewModel.delete(id);
+                mViewModel.getList();
+            }
         };
 
         this.mAdaptar.attachListener(listener);
@@ -79,6 +87,14 @@ public class PacientesFragment extends Fragment {
             public void onChanged(List<PacienteEntity> listaPacientes) {
 //                qdo a lista for alterada será enviada ao adaptar
                 mAdaptar.preencheLista(listaPacientes);
+            }
+        });
+        this.mViewModel.retorno.observe(getViewLifecycleOwner(), new Observer<RetornoEntity>() {
+            @Override
+            public void onChanged(RetornoEntity retorno) {
+//                informa o salvamento dos dados
+                Toast.makeText(getContext(), retorno.mMensagem, Toast.LENGTH_SHORT).show();
+//                caso tenha dado certo, encerra a activity senão continua na nela
             }
         });
     }
