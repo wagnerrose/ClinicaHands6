@@ -14,8 +14,6 @@ import com.example.clinicahands6.repository.PacienteRepository;
 import java.util.List;
 
 public class PacientesViewModel extends AndroidViewModel {
-
-
     private PacienteRepository mRepository;
 
     private MutableLiveData<List<PacienteEntity>> mlistaPacientes = new MutableLiveData<>();
@@ -37,9 +35,7 @@ public class PacientesViewModel extends AndroidViewModel {
         }
     }
     public void getList() {
-
         this.mlistaPacientes.setValue(this.mRepository.getAll());
-
     }
 
 //    public void bind(PacienteEntity) {

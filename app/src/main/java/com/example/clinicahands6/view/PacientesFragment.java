@@ -46,11 +46,11 @@ public class PacientesFragment extends Fragment {
         this.mViewHolder.recyclerPacientes.setLayoutManager(new LinearLayoutManager(getContext()));
         //        define um adapter
         this.mViewHolder.recyclerPacientes.setAdapter(this.mAdaptar);
-
+//        Monitora o click do nome do paciente para edição
         OnListClick listener = new OnListClick() {
             @Override
             public void onClick(int id) {
-//                passando parametros para a activity
+//              passando parametros para a activity
                 Bundle bundle = new Bundle();
                 bundle.putInt(PacienteConstantes.PACIENTEID, id);
                 Intent intent = new Intent(getContext(), PacienteActivity.class);
@@ -66,9 +66,7 @@ public class PacientesFragment extends Fragment {
         };
 
         this.mAdaptar.attachListener(listener);
-
-
-        //      Monitora a alteração dos dados
+        //      Monitora a observa a alteração dos dados
         this.observers();
 //        carrega da lista de pacientes para a Fragment
 
@@ -85,7 +83,7 @@ public class PacientesFragment extends Fragment {
         this.mViewModel.listaPacientes.observe(getViewLifecycleOwner(), new Observer<List<PacienteEntity>>() {
             @Override
             public void onChanged(List<PacienteEntity> listaPacientes) {
-//                qdo a lista for alterada será enviada ao adaptar
+//              qdo a lista for alterada será enviada ao adaptar
                 mAdaptar.preencheLista(listaPacientes);
             }
         });

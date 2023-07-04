@@ -24,7 +24,7 @@ public interface MedicoDao {
     @Query("SELECT * FROM medicos ORDER BY nome ASC")
     List<MedicoEntity> getAll();
 
-    @Query("SELECT * FROM medicos WHERE id = :idmedico")
-    MedicoEntity getById(int idmedico);
+    @Query("SELECT * FROM medicos WHERE id = :id")
+    MedicoEntity getById(int id);
 
 }

@@ -40,7 +40,7 @@ public class PacienteActivity extends AppCompatActivity implements View.OnClickL
         this.mViewHolder.editTelefone = findViewById((R.id.editTelefone));
         this.mViewHolder.btSalvar = findViewById(R.id.btSalvar);
 
-        // escuta os eventos
+        // escuta os eventos de click
         this.setListeners();
         // acompanha paciente
         this.setObservers();
@@ -55,7 +55,6 @@ public class PacienteActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    // es
     @Override
     public void onClick(View view) {
         // Verifica se botão Salvar foi clicado
