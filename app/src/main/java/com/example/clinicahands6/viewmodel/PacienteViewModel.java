@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.clinicahands6.entity.PacienteEntity;
 import com.example.clinicahands6.entity.RetornoEntity;
+import com.example.clinicahands6.helpers.ValidaCPF;
 import com.example.clinicahands6.repository.PacienteRepository;
 
 public class PacienteViewModel extends AndroidViewModel {
@@ -28,11 +29,21 @@ public class PacienteViewModel extends AndroidViewModel {
     }
 
     public void salvar(PacienteEntity paciente) {
+        ValidaCPF cpf = new ValidaCPF();
+
         // Realiza a validação do campo nome não nulo
         if ("".equals(paciente.getNome())) {
             this.mRetorno.setValue(new RetornoEntity("Nome não pode ser vazio", false));
             return;
         }
+//        Realiza a validação e formataçao do CPF
+        if(cpf.isCPF(paciente.getCpf()) == false) {
+            this.mRetorno.setValue(new RetornoEntity("CPF Inválido. Digite apenas os números.", false));
+            return;
+        } else {
+            paciente.setCpf(cpf.formataCPF(paciente.getCpf()));
+        }
+
 
 //      Para um id de paciente nulo, estaremos em um ambiente de inclusão
 //      caso contrário será de edição

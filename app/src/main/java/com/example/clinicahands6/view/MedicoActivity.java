@@ -29,13 +29,13 @@ public class MedicoActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Carrega o layout formulário de médicos a Activity Medico
-        setContentView(R.layout.activity_formulario_medico);
+        setContentView(R.layout.activity_medico);
         this.mViewModel = new ViewModelProvider(this).get(MedicoViewModel.class);
 
         //mepeia os elementos do layout formulario paciente
-        this.mViewHolder.editNome = findViewById(R.id.editNome);
-        this.mViewHolder.editCrmUf = findViewById(R.id.editCrmUf);
-        this.mViewHolder.editCrmCodigo = findViewById(R.id.editCrmCodigo);
+        this.mViewHolder.editNome = findViewById(R.id.edit_nome);
+        this.mViewHolder.editCrmUf = findViewById(R.id.edit_crm_uf);
+        this.mViewHolder.editCrmCodigo = findViewById(R.id.edit_crm_codigo);
         this.mViewHolder.btSalvar = findViewById(R.id.btSalvar);
 
         // escuta os eventos de click
@@ -74,7 +74,7 @@ public class MedicoActivity extends AppCompatActivity implements View.OnClickLis
             public void onChanged(MedicoEntity medico) {
                 mViewHolder.editNome.setText(medico.getNome());
                 mViewHolder.editCrmUf.setText(medico.getCrm_uf());
-                mViewHolder.editCrmCodigo.setText(medico.getCrm_codigo());
+                mViewHolder.editCrmCodigo.setText(Integer.toString(medico.getCrm_codigo()));
             }
         });
         this.mViewModel.retorno.observe(this, new Observer<RetornoEntity>() {
@@ -98,7 +98,7 @@ public class MedicoActivity extends AppCompatActivity implements View.OnClickLis
         int crm_codigo = Integer.parseInt(this.mViewHolder.editCrmCodigo.getText().toString());
 
         // instancia medico
-        MedicoEntity medico = new MedicoEntity(this.mMedicoId, nome, crm_uf,  crm_codigo);
+        MedicoEntity medico = new MedicoEntity(this.mMedicoId, nome, crm_uf, crm_codigo);
         // encaminha os dados para ViewModel implementar as regras de negócio (validação dos dados,
         // adaptação e salvamento;
         this.mViewModel.salvar(medico);

@@ -3,6 +3,9 @@ package com.example.clinicahands6.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -34,6 +37,7 @@ public class MedicosFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
 
         this.mViewModel = new ViewModelProvider(this).get(MedicosViewModel.class);
         View root = inflater.inflate(R.layout.fragment_medicos, container, false);
@@ -54,7 +58,6 @@ public class MedicosFragment extends Fragment {
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
-
             @Override
             public void onDelete(int id) {
                 mViewModel.delete(id);
@@ -89,8 +92,11 @@ public class MedicosFragment extends Fragment {
         });
     }
 
-    private static class ViewHolder {
-        RecyclerView recyclerMedicos;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.mViewModel.getList();
     }
 
     @Override
@@ -98,4 +104,32 @@ public class MedicosFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_fragment, menu);
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings: {
+                // Navigate to settings screen.
+                return true;
+            }
+            case R.id.action_insert: {
+                Intent intent = new Intent(getContext(), MedicoActivity.class);
+                startActivity(intent);
+                return true;
+            }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+    private static class ViewHolder {
+        RecyclerView recyclerMedicos;
+    }
+
+
 }

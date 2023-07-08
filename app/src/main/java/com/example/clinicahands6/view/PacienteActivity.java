@@ -28,7 +28,7 @@ public class PacienteActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fomulario_paciente);
+        setContentView(R.layout.activity_paciente);
         this.mViewModel = new ViewModelProvider(this).get(PacienteViewModel.class);
 
         //mepeia os elementos do layout formulario paciente

@@ -3,6 +3,9 @@ package com.example.clinicahands6.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -37,9 +40,12 @@ public class PacientesFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        setHasOptionsMenu(true);
+
         this.mViewModel = new ViewModelProvider(this).get(PacientesViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_pacientes, container, false);
+
         //        instancia a RecyclerView
         this.mViewHolder.recyclerPacientes = root.findViewById(R.id.reclycler_list);
         //        Define um Layout
@@ -77,6 +83,28 @@ public class PacientesFragment extends Fragment {
     public void onResume() {
         super.onResume();
         this.mViewModel.getList();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_fragment, menu);
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings: {
+                // Navigate to settings screen.
+                return true;
+            }
+            case R.id.action_insert: {
+                Intent intent = new Intent(getContext(), PacienteActivity.class);
+                startActivity(intent);
+                return true;
+            }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 
     private void observers() {

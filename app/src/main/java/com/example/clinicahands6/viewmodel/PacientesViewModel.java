@@ -37,8 +37,4 @@ public class PacientesViewModel extends AndroidViewModel {
     public void getList() {
         this.mlistaPacientes.setValue(this.mRepository.getAll());
     }
-
-//    public void bind(PacienteEntity) {
-//
-//    }
 }
